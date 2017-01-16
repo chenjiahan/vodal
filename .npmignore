@@ -1,0 +1,7 @@
+.idea
+.vscode
+.DS_STORE
+node_modules
+demo
+.gitignore
+.npmignore

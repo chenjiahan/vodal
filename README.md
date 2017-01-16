@@ -1,2 +1,2 @@
-# vodal
-Modal with animations, bulit with Vue2
+# Vodal
+A vue modal with animations.
