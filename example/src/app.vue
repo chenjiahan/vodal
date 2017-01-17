@@ -1,18 +1,68 @@
 <template>
     <div class="wrap">
-        <div class="container" :style="`paddingTop: ${(window.innerHeight - 440) / 2}`">
-            <h1 class="title scale">Rodal</h1>
-            <h3 class="intro scale">A React modal with animations.</h3>
-            <div class="btn-area">{buttons}</div>
+        <div class="container" :style="paddingTop">
+            <h1 class="title scale">Vodal</h1>
+            <h3 class="intro scale">A vue modal with animations.</h3>
+            <div class="btn-area">
+                <button 
+                    class="btn scale" 
+                    v-text="item"
+                    v-for="(item, index) in types" 
+                    :style="delay(index)"
+                    @click="onShow(item)"
+                />
+            </div>
+            <vodal 
+                :show="show"
+                :animation="animation"
+                @hide="show = false"
+            >
+                <div class="header">Vodal</div>
+                <div class="body">A vue modal with animations.</div>
+                <button class="vodal-confirm-btn" @click="show = false">ok</button>
+                <button class="vodal-cancel-btn" @click="show = false">close</button>
+            </vodal>
         </div>
     </div>
 </template>
 
 <script>
 import Vue from 'vue';
-import Vodal from '../src';
+import Vodal from '../../src';
 
-Vue.component(Vodal);
+Vue.component(Vodal.name, Vodal);
+
+export default {
+    name: 'app',
+
+    data () {
+        return {
+            show: false,
+            animation: '',
+            types: ['zoom', 'fade', 'flip', 'door', 'rotate', 'slideUp', 'slideDown', 'slideLeft', 'slideRight']
+        }
+    },
+
+    computed: {
+        paddingTop () {
+            return `paddingTop: ${(window.innerHeight - 440) / 2}px`;
+        }
+    },
+
+    methods: {
+        delay (index) {
+            return `
+                animationDelay: ${index * 100}ms;
+                WebkitAnimationDelay: ${index * 100}ms;
+            `;
+        },
+
+        onShow(animation) {
+            this.animation = animation;
+            this.show = true;
+        }
+    }
+}
 </script>
 
 <style>
@@ -151,7 +201,7 @@ input::-moz-focus-inner {
 }
 
 /* -- button -- */
-.rodal-cancel-btn, .rodal-confirm-btn {
+.vodal-cancel-btn, .vodal-confirm-btn {
     position: absolute;
     font: inherit;
     bottom: 16px;
@@ -161,29 +211,29 @@ input::-moz-focus-inner {
     transition: background .2s;
     border: 1px solid #03a9f4;
 }
-.rodal-confirm-btn {
+.vodal-confirm-btn {
     color: #fff;
     right: 102px;
     background: #03a9f4;
 }
-.rodal-confirm-btn:hover {
+.vodal-confirm-btn:hover {
     background: #0098e3;
 }
-.rodal-cancel-btn {
+.vodal-cancel-btn {
     color: #03a9f4;
     right: 16px;
     background: #fff;
 }
-.rodal-cancel-btn:hover {
+.vodal-cancel-btn:hover {
     background: #fafafa;
 }
-.rodal-cancel-btn:focus, .rodal-confirm-btn:focus {
+.vodal-cancel-btn:focus, .vodal-confirm-btn:focus {
     outline: none;
 }
-.rodal-confirm-btn:active {
+.vodal-confirm-btn:active {
     background: #0087d2;
 }
-.rodal-cancel-btn:active {
+.vodal-cancel-btn:active {
     background: #fafafa;
     box-shadow: inset 1px 1px 1px rgba(0,0,0,.2),0 0 1px transparent;
 }

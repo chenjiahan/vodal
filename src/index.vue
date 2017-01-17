@@ -1,5 +1,15 @@
 <template>
-
+    <transition name="vodal-fade">
+        <div class="vodal" v-show="show" :style="style">
+            <div class="vodal-mask" v-if="mask" @click="$emit('hide')" />
+            <transition :name="`vodal-${animation}`">
+                <div class="vodal-dialog" v-show="show" :style="dialogStyle">
+                    <span class="vodal-close" v-if="closeButton" @click="$emit('hide')" />
+                    <slot></slot>
+                </div>
+            </transition>
+        </div>
+    </transition>
 </template>
 
 <script>
@@ -7,17 +17,66 @@ export default {
     name: 'vodal',
 
     props: {
-
+        show: {
+            type: Boolean,
+            required: true
+        },
+        width: {
+            type: Number,
+            default: 400
+        },
+        height: {
+            type: Number,
+            default: 240
+        },
+        duration: {
+            type: Number,
+            default: 300
+        },
+        measure: {
+            type: String,
+            default: 'px'
+        },
+        animation: {
+            type: String,
+            default: 'fade'
+        },
+        mask: {
+            type: Boolean,
+            default: true  
+        },
+        closeButton: {
+            type: Boolean,
+            default: true
+        },
     },
 
-    
+    computed: {
+        style() {
+            const { duration } = this;
+            return `
+                animationDuration: ${duration}ms;
+                webkitAnimationDuration: ${duration}ms;
+            `;
+        },
+
+        dialogStyle() {
+            const { width, height, measure, duration } = this;
+            return `
+                width: ${width + measure};
+                height: ${height + measure};
+                animationDuration: ${duration}ms;
+                webkitAnimationDuration: ${duration}ms;
+            `;
+        }
+    }
 }
 </script>
 
 <style>
 /* -- container -- */
-.rodal,
-.rodal-mask {
+.vodal,
+.vodal-mask {
     top: 0;
     left: 0;
     width: 100%;
@@ -25,18 +84,18 @@ export default {
     z-index: 100;
 }
 
-.rodal {
+.vodal {
     position: fixed;
 }
 
 /* -- mask -- */
-.rodal-mask {
+.vodal-mask {
     position: absolute;
     background: rgba(0, 0, 0, .3);
 }
 
 /* -- dialog -- */
-.rodal-dialog {
+.vodal-dialog {
     position: absolute;
     top: 0;
     left: 0;
@@ -51,7 +110,7 @@ export default {
 }
 
 /* -- close button -- */
-.rodal-close {
+.vodal-close {
     position: absolute;
     cursor: pointer;
     top: 16px;
@@ -60,8 +119,8 @@ export default {
     height: 16px;
 }
 
-.rodal-close:before,
-.rodal-close:after {
+.vodal-close:before,
+.vodal-close:after {
     position: absolute;
     content: '';
     height: 2px;
@@ -75,253 +134,253 @@ export default {
     transition: background .2s;
 }
 
-.rodal-close:before {
+.vodal-close:before {
     -webkit-transform: rotate(45deg);
     transform: rotate(45deg);
 }
 
-.rodal-close:after {
+.vodal-close:after {
     -webkit-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
 
-.rodal-close:hover:before,
-.rodal-close:hover:after {
+.vodal-close:hover:before,
+.vodal-close:hover:after {
     background: #333;
 }
 
 /* -- fade -- */
-@-webkit-keyframes rodal-fade-enter {
+@-webkit-keyframes vodal-fade-enter {
     from {
         opacity: 0;
     }
 }
 
-@keyframes rodal-fade-enter {
+@keyframes vodal-fade-enter {
     from {
         opacity: 0;
     }
 }
 
-.rodal-fade-enter {
-    -webkit-animation: rodal-fade-enter both ease-in;
-    animation: rodal-fade-enter both ease-in;
+.vodal-fade-enter-active {
+    -webkit-animation: vodal-fade-enter both ease-in;
+    animation: vodal-fade-enter both ease-in;
 }
 
-@-webkit-keyframes rodal-fade-leave {
+@-webkit-keyframes vodal-fade-leave {
     to {
         opacity: 0
     }
 }
 
-@keyframes rodal-fade-leave {
+@keyframes vodal-fade-leave {
     to {
         opacity: 0
     }
 }
 
-.rodal-fade-leave {
-    -webkit-animation: rodal-fade-leave both ease-out;
-    animation: rodal-fade-leave both ease-out;
+.vodal-fade-leave-active {
+    -webkit-animation: vodal-fade-leave both ease-out;
+    animation: vodal-fade-leave both ease-out;
 }
 
 /* -- zoom -- */
-@-webkit-keyframes rodal-zoom-enter {
+@-webkit-keyframes vodal-zoom-enter {
     from {
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 }
 
-@keyframes rodal-zoom-enter {
+@keyframes vodal-zoom-enter {
     from {
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 }
 
-.rodal-zoom-enter {
-    -webkit-animation: rodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-zoom-enter-active {
+    -webkit-animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-zoom-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-zoom-leave {
+@-webkit-keyframes vodal-zoom-leave {
     to {
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 }
 
-@keyframes rodal-zoom-leave {
+@keyframes vodal-zoom-leave {
     to {
         -webkit-transform: scale3d(.3, .3, .3);
         transform: scale3d(.3, .3, .3);
     }
 }
 
-.rodal-zoom-leave {
-    -webkit-animation: rodal-zoom-leave both;
-    animation: rodal-zoom-leave both;
+.vodal-zoom-leave-active {
+    -webkit-animation: vodal-zoom-leave both;
+    animation: vodal-zoom-leave both;
 }
 
 /* -- slideDown -- */
-@-webkit-keyframes rodal-slideDown-enter {
+@-webkit-keyframes vodal-slideDown-enter {
     from {
         -webkit-transform: translate3d(0, -100px, 0);
         transform: translate3d(0, -100px, 0);
     }
 }
 
-@keyframes rodal-slideDown-enter {
+@keyframes vodal-slideDown-enter {
     from {
         -webkit-transform: translate3d(0, -100px, 0);
         transform: translate3d(0, -100px, 0);
     }
 }
 
-.rodal-slideDown-enter {
-    -webkit-animation: rodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-slideDown-enter-active {
+    -webkit-animation: vodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideDown-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-slideDown-leave {
+@-webkit-keyframes vodal-slideDown-leave {
     to {
         -webkit-transform: translate3d(0, -100px, 0);
         transform: translate3d(0, -100px, 0);
     }
 }
 
-@keyframes rodal-slideDown-leave {
+@keyframes vodal-slideDown-leave {
     to {
         -webkit-transform: translate3d(0, -100px, 0);
         transform: translate3d(0, -100px, 0);
     }
 }
 
-.rodal-slideDown-leave {
-    -webkit-animation: rodal-slideDown-leave both;
-    animation: rodal-slideDown-leave both;
+.vodal-slideDown-leave-active {
+    -webkit-animation: vodal-slideDown-leave both;
+    animation: vodal-slideDown-leave both;
 }
 
 /* -- slideLeft -- */
-@-webkit-keyframes rodal-slideLeft-enter {
+@-webkit-keyframes vodal-slideLeft-enter {
     from {
         -webkit-transform: translate3d(-150px, 0, 0);
         transform: translate3d(-150px, 0, 0);
     }
 }
 
-@keyframes rodal-slideLeft-enter {
+@keyframes vodal-slideLeft-enter {
     from {
         -webkit-transform: translate3d(-150px, 0, 0);
         transform: translate3d(-150px, 0, 0);
     }
 }
 
-.rodal-slideLeft-enter {
-    -webkit-animation: rodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-slideLeft-enter-active {
+    -webkit-animation: vodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-slideLeft-leave {
+@-webkit-keyframes vodal-slideLeft-leave {
     to {
         -webkit-transform: translate3d(-150px, 0, 0);
         transform: translate3d(-150px, 0, 0);
     }
 }
 
-@keyframes rodal-slideLeft-leave {
+@keyframes vodal-slideLeft-leave {
     to {
         -webkit-transform: translate3d(-150px, 0, 0);
         transform: translate3d(-150px, 0, 0);
     }
 }
 
-.rodal-slideLeft-leave {
-    -webkit-animation: rodal-slideLeft-leave both;
-    animation: rodal-slideLeft-leave both;
+.vodal-slideLeft-leave-active {
+    -webkit-animation: vodal-slideLeft-leave both;
+    animation: vodal-slideLeft-leave both;
 }
 
 /* -- slideRight -- */
-@-webkit-keyframes rodal-slideRight-enter {
+@-webkit-keyframes vodal-slideRight-enter {
     from {
         -webkit-transform: translate3d(150px, 0, 0);
         transform: translate3d(150px, 0, 0);
     }
 }
 
-@keyframes rodal-slideRight-enter {
+@keyframes vodal-slideRight-enter {
     from {
         -webkit-transform: translate3d(150px, 0, 0);
         transform: translate3d(150px, 0, 0);
     }
 }
 
-.rodal-slideRight-enter {
-    -webkit-animation: rodal-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-slideRight-enter-active {
+    -webkit-animation: vodal-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideRight-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-slideRight-leave {
+@-webkit-keyframes vodal-slideRight-leave {
     to {
         -webkit-transform: translate3d(150px, 0, 0);
         transform: translate3d(150px, 0, 0);
     }
 }
 
-@keyframes rodal-slideRight-leave {
+@keyframes vodal-slideRight-leave {
     to {
         -webkit-transform: translate3d(150px, 0, 0);
         transform: translate3d(150px, 0, 0);
     }
 }
 
-.rodal-slideRight-leave {
-    -webkit-animation: rodal-slideRight-leave both;
-    animation: rodal-slideRight-leave both;
+.vodal-slideRight-leave-active {
+    -webkit-animation: vodal-slideRight-leave both;
+    animation: vodal-slideRight-leave both;
 }
 
 /* -- slideUp -- */
-@-webkit-keyframes rodal-slideUp-enter {
+@-webkit-keyframes vodal-slideUp-enter {
     from {
         -webkit-transform: translate3d(0, 100px, 0);
         transform: translate3d(0, 100px, 0);
     }
 }
 
-@keyframes rodal-slideUp-enter {
+@keyframes vodal-slideUp-enter {
     from {
         -webkit-transform: translate3d(0, 100px, 0);
         transform: translate3d(0, 100px, 0);
     }
 }
 
-.rodal-slideUp-enter {
-    -webkit-animation: rodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-slideUp-enter-active {
+    -webkit-animation: vodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-slideUp-leave {
+@-webkit-keyframes vodal-slideUp-leave {
     to {
         -webkit-transform: translate3d(0, 100px, 0);
         transform: translate3d(0, 100px, 0);
     }
 }
 
-@keyframes rodal-slideUp-leave {
+@keyframes vodal-slideUp-leave {
     to {
         -webkit-transform: translate3d(0, 100px, 0);
         transform: translate3d(0, 100px, 0);
     }
 }
 
-.rodal-slideUp-leave {
-    -webkit-animation: rodal-slideUp-leave both;
-    animation: rodal-slideUp-leave both;
+.vodal-slideUp-leave-active {
+    -webkit-animation: vodal-slideUp-leave both;
+    animation: vodal-slideUp-leave both;
 }
 
 /* -- flip -- */
-@-webkit-keyframes rodal-flip-enter {
+@-webkit-keyframes vodal-flip-enter {
     from {
         -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
         transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
@@ -336,7 +395,7 @@ export default {
     }
 }
 
-@keyframes rodal-flip-enter {
+@keyframes vodal-flip-enter {
     from {
         -webkit-transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
         transform: perspective(400px) rotate3d(1, 0, 0, 60deg);
@@ -351,14 +410,14 @@ export default {
     }
 }
 
-.rodal-flip-enter {
-    -webkit-animation: rodal-flip-enter both ease-in;
-    animation: rodal-flip-enter both ease-in;
+.vodal-flip-enter-active {
+    -webkit-animation: vodal-flip-enter both ease-in;
+    animation: vodal-flip-enter both ease-in;
     -webkit-backface-visibility: visible !important;
     backface-visibility: visible !important;
 }
 
-@-webkit-keyframes rodal-flip-leave {
+@-webkit-keyframes vodal-flip-leave {
     from {
         -webkit-transform: perspective(400px);
         transform: perspective(400px);
@@ -373,7 +432,7 @@ export default {
     }
 }
 
-@keyframes rodal-flip-leave {
+@keyframes vodal-flip-leave {
     from {
         -webkit-transform: perspective(400px);
         transform: perspective(400px);
@@ -388,77 +447,77 @@ export default {
     }
 }
 
-.rodal-flip-leave {
-    -webkit-animation: rodal-flip-leave both;
-    animation: rodal-flip-leave both;
+.vodal-flip-leave-active {
+    -webkit-animation: vodal-flip-leave both;
+    animation: vodal-flip-leave both;
     -webkit-backface-visibility: visible !important;
     backface-visibility: visible !important;
 }
 
 /* -- rotate -- */
-@-webkit-keyframes rodal-rotate-enter {
+@-webkit-keyframes vodal-rotate-enter {
     from {
         -webkit-transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
         transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
     }
 }
 
-@keyframes rodal-rotate-enter {
+@keyframes vodal-rotate-enter {
     from {
         -webkit-transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
         transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
     }
 }
 
-.rodal-rotate-enter {
-    -webkit-animation: rodal-rotate-enter both;
-    animation: rodal-rotate-enter both;
+.vodal-rotate-enter-active {
+    -webkit-animation: vodal-rotate-enter both;
+    animation: vodal-rotate-enter both;
     -webkit-transform-origin: center;
     transform-origin: center;
 }
 
-@-webkit-keyframes rodal-rotate-leave {
+@-webkit-keyframes vodal-rotate-leave {
     to {
         -webkit-transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
         transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
     }
 }
 
-@keyframes rodal-rotate-leave {
+@keyframes vodal-rotate-leave {
     to {
         -webkit-transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
         transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
     }
 }
 
-.rodal-rotate-leave {
-    -webkit-animation: rodal-rotate-leave both;
-    animation: rodal-rotate-leave both;
+.vodal-rotate-leave-active {
+    -webkit-animation: vodal-rotate-leave both;
+    animation: vodal-rotate-leave both;
     -webkit-transform-origin: center;
     transform-origin: center;
 }
 
 /* -- door -- */
-@-webkit-keyframes rodal-door-enter {
+@-webkit-keyframes vodal-door-enter {
     from {
         -webkit-transform: scale3d(0, 1, 1);
         transform: scale3d(0, 1, 1);
     }
 }
 
-@keyframes rodal-door-enter {
+@keyframes vodal-door-enter {
     from {
         -webkit-transform: scale3d(0, 1, 1);
         transform: scale3d(0, 1, 1);
     }
 }
 
-.rodal-door-enter {
-    -webkit-animation: rodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
-    animation: rodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+.vodal-door-enter-active {
+    -webkit-animation: vodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
 }
 
-@-webkit-keyframes rodal-door-leave {
+@-webkit-keyframes vodal-door-leave {
     60% {
         -webkit-transform: scale3d(.01, 1, 1);
         transform: scale3d(.01, 1, 1);
@@ -469,7 +528,7 @@ export default {
     }
 }
 
-@keyframes rodal-door-leave {
+@keyframes vodal-door-leave {
     60% {
         -webkit-transform: scale3d(.01, 1, 1);
         transform: scale3d(.01, 1, 1);
@@ -480,8 +539,8 @@ export default {
     }
 }
 
-.rodal-door-leave {
-    -webkit-animation: rodal-door-leave both;
-    animation: rodal-door-leave both;
+.vodal-door-leave-active {
+    -webkit-animation: vodal-door-leave both;
+    animation: vodal-door-leave both;
 }
 </style>
