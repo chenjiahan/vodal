@@ -2,10 +2,13 @@ const path = require('path');
 const webpack = require('webpack');
 
 module.exports = {
-    entry: "./example/src/index.js",
+    entry: {
+        index: './example/src/index.js'   
+    },
     output: {
-        path: path.resolve(__dirname, "example/dist"),
-        filename: "bundle.js"
+        path: path.resolve(__dirname, 'example/dist'),
+        publicPath: "/dist/",
+        filename: "[name].js"
     },
     module: {
         rules: [
@@ -33,9 +36,29 @@ module.exports = {
             }
         })
     ],
+    performance: {
+        hints: false
+    },
+    resolve: {
+        extensions: ['.webpack.js',  '.js', '.vue', '.ts']
+    },
     devServer: {
-        contentBase: path.join(__dirname, 'example'),
+        contentBase: './example',
         compress: true,
-        port: 2345
+        port: 2345,
+        stats: {
+            assets: true,
+            children: false,
+            chunks: false,
+            hash: false,
+            modules: false,
+            publicPath: false,
+            timings: false,
+            version: false,
+            warnings: true,
+            colors: {
+                green: '\u001b[32m',
+            }
+        }
     }
 };
