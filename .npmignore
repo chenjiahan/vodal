@@ -5,3 +5,6 @@ node_modules
 demo
 .gitignore
 .npmignore
+.babelrc
+yarn.lock
+

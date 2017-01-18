@@ -1,0 +1,34 @@
+/* -- fade -- */
+@-webkit-keyframes vodal-fade-enter {
+    from {
+        opacity: 0;
+    }
+}
+
+@keyframes vodal-fade-enter {
+    from {
+        opacity: 0;
+    }
+}
+
+.vodal-fade-enter-active {
+    -webkit-animation: vodal-fade-enter both ease-in;
+    animation: vodal-fade-enter both ease-in;
+}
+
+@-webkit-keyframes vodal-fade-leave {
+    to {
+        opacity: 0
+    }
+}
+
+@keyframes vodal-fade-leave {
+    to {
+        opacity: 0
+    }
+}
+
+.vodal-fade-leave-active {
+    -webkit-animation: vodal-fade-leave both ease-out;
+    animation: vodal-fade-leave both ease-out;
+}

@@ -1,0 +1,38 @@
+/* -- slideLeft -- */
+@-webkit-keyframes vodal-slideLeft-enter {
+    from {
+        -webkit-transform: translate3d(-150px, 0, 0);
+        transform: translate3d(-150px, 0, 0);
+    }
+}
+
+@keyframes vodal-slideLeft-enter {
+    from {
+        -webkit-transform: translate3d(-150px, 0, 0);
+        transform: translate3d(-150px, 0, 0);
+    }
+}
+
+.vodal-slideLeft-enter-active {
+    -webkit-animation: vodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideLeft-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@-webkit-keyframes vodal-slideLeft-leave {
+    to {
+        -webkit-transform: translate3d(-150px, 0, 0);
+        transform: translate3d(-150px, 0, 0);
+    }
+}
+
+@keyframes vodal-slideLeft-leave {
+    to {
+        -webkit-transform: translate3d(-150px, 0, 0);
+        transform: translate3d(-150px, 0, 0);
+    }
+}
+
+.vodal-slideLeft-leave-active {
+    -webkit-animation: vodal-slideLeft-leave both;
+    animation: vodal-slideLeft-leave both;
+}

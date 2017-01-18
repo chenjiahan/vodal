@@ -13,8 +13,13 @@
                 />
             </div>
             <vodal 
+                measure="em"
                 :show="show"
                 :animation="animation"
+                :width="28.5"
+                :height="17"
+                :duration="301"
+                :className="my-dialog"
                 @hide="show = false"
             >
                 <div class="header">Vodal</div>
@@ -39,13 +44,8 @@ export default {
         return {
             show: false,
             animation: '',
+            paddingTop: `paddingTop: ${(window.innerHeight - 440) / 2}px`,
             types: ['zoom', 'fade', 'flip', 'door', 'rotate', 'slideUp', 'slideDown', 'slideLeft', 'slideRight']
-        }
-    },
-
-    computed: {
-        paddingTop () {
-            return `paddingTop: ${(window.innerHeight - 440) / 2}px`;
         }
     },
 
@@ -66,6 +66,16 @@ export default {
 </script>
 
 <style>
+@import "../../src/fade.css";
+@import "../../src/door.css";
+@import "../../src/flip.css";
+@import "../../src/rotate.css";
+@import "../../src/slide-down.css";
+@import "../../src/slide-left.css";
+@import "../../src/slide-right.css";
+@import "../../src/slide-up.css";
+@import "../../src/zoom.css";
+
 *,
 *:before,
 *:after {

@@ -8,7 +8,7 @@ A vue modal with animations.
     
 ## Usage
 ``` xml
-<vodal :show="show" :animation="rotate" @hide="show = false">
+<vodal :show="show" animation="rotate" @hide="show = false">
     <div>A vue modal with animations.</div>
 </vodal>
 ```

@@ -1,0 +1,46 @@
+/* -- door -- */
+@-webkit-keyframes vodal-door-enter {
+    from {
+        -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+    }
+}
+
+@keyframes vodal-door-enter {
+    from {
+        -webkit-transform: scale3d(0, 1, 1);
+        transform: scale3d(0, 1, 1);
+    }
+}
+
+.vodal-door-enter-active {
+    -webkit-animation: vodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-door-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@-webkit-keyframes vodal-door-leave {
+    60% {
+        -webkit-transform: scale3d(.01, 1, 1);
+        transform: scale3d(.01, 1, 1);
+    }
+    to {
+        -webkit-transform: scale3d(0, 1, .1);
+        transform: scale3d(0, 1, .1);
+    }
+}
+
+@keyframes vodal-door-leave {
+    60% {
+        -webkit-transform: scale3d(.01, 1, 1);
+        transform: scale3d(.01, 1, 1);
+    }
+    to {
+        -webkit-transform: scale3d(0, 1, .1);
+        transform: scale3d(0, 1, .1);
+    }
+}
+
+.vodal-door-leave-active {
+    -webkit-animation: vodal-door-leave both;
+    animation: vodal-door-leave both;
+}

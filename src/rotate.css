@@ -1,0 +1,42 @@
+/* -- rotate -- */
+@-webkit-keyframes vodal-rotate-enter {
+    from {
+        -webkit-transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+        transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+    }
+}
+
+@keyframes vodal-rotate-enter {
+    from {
+        -webkit-transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+        transform: rotate3d(0, 0, 1, -180deg) scale3d(.3, .3, .3);
+    }
+}
+
+.vodal-rotate-enter-active {
+    -webkit-animation: vodal-rotate-enter both;
+    animation: vodal-rotate-enter both;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+}
+
+@-webkit-keyframes vodal-rotate-leave {
+    to {
+        -webkit-transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+        transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+    }
+}
+
+@keyframes vodal-rotate-leave {
+    to {
+        -webkit-transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+        transform: rotate3d(0, 0, 1, 180deg) scale3d(.3, .3, .3);
+    }
+}
+
+.vodal-rotate-leave-active {
+    -webkit-animation: vodal-rotate-leave both;
+    animation: vodal-rotate-leave both;
+    -webkit-transform-origin: center;
+    transform-origin: center;
+}

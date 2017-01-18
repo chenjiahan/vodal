@@ -1,0 +1,38 @@
+/* -- slideUp -- */
+@-webkit-keyframes vodal-slideUp-enter {
+    from {
+        -webkit-transform: translate3d(0, 100px, 0);
+        transform: translate3d(0, 100px, 0);
+    }
+}
+
+@keyframes vodal-slideUp-enter {
+    from {
+        -webkit-transform: translate3d(0, 100px, 0);
+        transform: translate3d(0, 100px, 0);
+    }
+}
+
+.vodal-slideUp-enter-active {
+    -webkit-animation: vodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
+    animation: vodal-slideUp-enter both cubic-bezier(0.4, 0, 0, 1.5);
+}
+
+@-webkit-keyframes vodal-slideUp-leave {
+    to {
+        -webkit-transform: translate3d(0, 100px, 0);
+        transform: translate3d(0, 100px, 0);
+    }
+}
+
+@keyframes vodal-slideUp-leave {
+    to {
+        -webkit-transform: translate3d(0, 100px, 0);
+        transform: translate3d(0, 100px, 0);
+    }
+}
+
+.vodal-slideUp-leave-active {
+    -webkit-animation: vodal-slideUp-leave both;
+    animation: vodal-slideUp-leave both;
+}
