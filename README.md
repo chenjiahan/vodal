@@ -60,3 +60,7 @@ className|string|/|className for the container
 * slideDown
 * slideLeft
 * slideRight
+
+## Other
+[React version](https://github.com/chenjiahan/rodal)
+
