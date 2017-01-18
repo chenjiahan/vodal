@@ -4,14 +4,36 @@ A vue modal with animations.
 
 ## Installation    
 
-    yarn add vodal
+    npm i vodal --save
     
 ## Usage
+``` xml
+<vodal :show="show" :animation="rotate" @hide="show = false">
+    <div>A vue modal with animations.</div>
+</vodal>
+```
+
 ``` javascript
 import Vue from 'vue';
 import Vodal from 'vodal';
 
 Vue.component(Vodal.name, Vodal);
+
+export default {
+    name: 'app',
+    
+    data() {
+        return {
+            show: false
+        }
+    }
+}
+```
+
+``` sass
+// include animation styles
+@import "vodal/fade.css";
+@import "vodal/rotate.css";
 ```
 
 ## Props
