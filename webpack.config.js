@@ -7,7 +7,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'example/dist'),
-        publicPath: "/dist/",
+        publicPath: "/example/dist/",
         filename: "[name].js"
     },
     module: {
@@ -43,7 +43,7 @@ module.exports = {
         extensions: ['.webpack.js',  '.js', '.vue', '.ts']
     },
     devServer: {
-        contentBase: './example',
+        contentBase: './',
         compress: true,
         port: 2345,
         stats: {

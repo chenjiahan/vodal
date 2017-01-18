@@ -1,13 +1,13 @@
 {
   "name": "vodal",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A vue modal with animations.",
   "main": "src/index.vue",
   "scripts": {
     "test": "npm test",
     "dev": "node_modules/.bin/webpack-dev-server",
     "build": "webpack -p",
-    "publish": ""
+    "pub": "cp src/animation/* ./ && npm publish && node build/del.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "babel-preset-es2015": "^6.18.0",
     "babel-preset-stage-0": "^6.16.0",
     "css-loader": "^0.26.1",
+    "del": "^2.2.2",
     "vue-loader": "^10.0.2",
     "vue-template-compiler": "^2.1.8",
     "webpack": "2.2.0-rc.6",

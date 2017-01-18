@@ -7,4 +7,10 @@ demo
 .npmignore
 .babelrc
 yarn.lock
+build
+example
+src/animation/*.css
+webpack.config.js
+index.html
+
 

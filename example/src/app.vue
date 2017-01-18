@@ -66,15 +66,15 @@ export default {
 </script>
 
 <style>
-@import "../../src/fade.css";
-@import "../../src/door.css";
-@import "../../src/flip.css";
-@import "../../src/rotate.css";
-@import "../../src/slide-down.css";
-@import "../../src/slide-left.css";
-@import "../../src/slide-right.css";
-@import "../../src/slide-up.css";
-@import "../../src/zoom.css";
+@import "../../src/animation/fade.css";
+@import "../../src/animation/door.css";
+@import "../../src/animation/flip.css";
+@import "../../src/animation/rotate.css";
+@import "../../src/animation/slide-down.css";
+@import "../../src/animation/slide-left.css";
+@import "../../src/animation/slide-right.css";
+@import "../../src/animation/slide-up.css";
+@import "../../src/animation/zoom.css";
 
 *,
 *:before,
