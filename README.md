@@ -1,4 +1,4 @@
-# Vodal
+# Vodal [![Dependency Status](https://david-dm.org/chenjiahan/rodal.svg?style=flat-square)](https://david-dm.org/chenjiahan/vodal) [![NPM downloads](http://img.shields.io/npm/dm/rodal.svg?style=flat-square)](https://npmjs.org/package/vodal)
 A vue modal with animations.
 [Example](http://rodal.cn)
 
