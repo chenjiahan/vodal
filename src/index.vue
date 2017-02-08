@@ -1,6 +1,6 @@
 <template>
     <transition name="vodal-fade">
-        <div :class="['vodal', className]" v-show="show" :style="style">
+        <div :class="['vodal', className]" v-show="show" :style="style" @keyup.esc="onEsc" tabindex="-1">
             <div class="vodal-mask" v-if="mask" @click="$emit('hide')" />
             <transition :name="`vodal-${animation}`">
                 <div class="vodal-dialog" v-show="show" :style="dialogStyle">
@@ -64,12 +64,25 @@ export default {
         },
 
         dialogStyle() {
-            const { width, height, measure } = this;
             return `
-                width: ${width + measure};
-                height: ${height + measure};
+                width: ${this.width + this.measure};
+                height: ${this.height + this.measure};
                 ${this.style}
             `;
+        }
+    },
+
+    methods: {
+        onEsc() {
+            this.show && this.$emit('hide');
+        }
+    },
+
+    watch: {
+        show(show) {
+            show && this.$nextTick(() => {
+                this.$el.focus();
+            })
         }
     }
 }
