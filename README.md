@@ -4,7 +4,7 @@ A vue modal with animations.
 
 ## Installation    
 
-    npm i vodal --save
+    npm i -S vodal
     
 ## Usage
 ``` xml
