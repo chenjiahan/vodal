@@ -6,7 +6,7 @@
   "scripts": {
     "test": "npm test",
     "dev": "node_modules/.bin/webpack-dev-server",
-    "build": "webpack -p",
+    "build": "webpack -p --hide-modules",
     "pub": "cp src/animation/* ./ && npm publish && node build/del.js"
   },
   "repository": {
@@ -39,5 +39,8 @@
     "vue-template-compiler": "^2.1.10",
     "webpack": "^2.2.1",
     "webpack-dev-server": "^2.3.0"
+  },
+  "babel": {
+    "presets": ["es2015", "stage-0"]
   }
 }
