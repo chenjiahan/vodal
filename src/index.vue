@@ -1,6 +1,12 @@
 <template>
     <transition name="vodal-fade">
-        <div :class="['vodal', className]" v-show="show" :style="style" @keyup.esc="onEsc" tabindex="-1">
+        <div 
+            v-show="show" 
+            tabindex="-1"
+            :style="style" 
+            :class="['vodal', className]" 
+            @keyup.esc="onEsc" 
+        >
             <div class="vodal-mask" v-if="mask" @click="$emit('hide')" />
             <transition :name="`vodal-${animation}`">
                 <div class="vodal-dialog" v-show="show" :style="dialogStyle">
