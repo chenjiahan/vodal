@@ -32,7 +32,7 @@ export default {
 
 ``` sass
 // include animation styles
-@import "vodal/fade.css";
+@import "vodal/common.css";
 @import "vodal/rotate.css";
 ```
 

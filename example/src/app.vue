@@ -19,7 +19,7 @@
                 :width="28.5"
                 :height="17"
                 :duration="301"
-                :className="my-dialog"
+                className="my-dialog"
                 @hide="show = false"
             >
                 <div class="header">Vodal</div>
@@ -33,7 +33,7 @@
 
 <script>
 import Vue from 'vue';
-import Vodal from '../../src';
+import Vodal from '../../dist';
 
 Vue.component(Vodal.name, Vodal);
 
@@ -66,15 +66,15 @@ export default {
 </script>
 
 <style>
-@import "../../src/animation/fade.css";
-@import "../../src/animation/door.css";
-@import "../../src/animation/flip.css";
-@import "../../src/animation/rotate.css";
-@import "../../src/animation/slide-down.css";
-@import "../../src/animation/slide-left.css";
-@import "../../src/animation/slide-right.css";
-@import "../../src/animation/slide-up.css";
-@import "../../src/animation/zoom.css";
+@import "../../src/style/common.css";
+@import "../../src/style/door.css";
+@import "../../src/style/flip.css";
+@import "../../src/style/rotate.css";
+@import "../../src/style/slide-down.css";
+@import "../../src/style/slide-left.css";
+@import "../../src/style/slide-right.css";
+@import "../../src/style/slide-up.css";
+@import "../../src/style/zoom.css";
 
 *,
 *:before,
