@@ -20,13 +20,13 @@ import Vodal from 'vodal';
 Vue.component(Vodal.name, Vodal);
 
 export default {
-    name: 'app',
+  name: 'app',
     
-    data() {
-        return {
-            show: false
-        }
+  data() {
+    return {
+      show: false
     }
+  }
 }
 ```
 
@@ -46,9 +46,19 @@ measure|string|px|measure of width and height
 show|bool|false|whether to show dialog
 mask|bool|true|whether to show mask
 closeButton|bool|true|whether to show close button
+closeOnEsc|bool|false|whether close dialog when esc pressed
+closeOnClickMask|bool|true|whether close dialog when mask clicked
 animation|string|zoom|animation type
 duration|number|300|animation duration
 className|string|/|className for the container
+customStyles|object|/|custom dialog styles
+customMaskStyles|object|/|custom mask styles
+
+## Event
+Name|
+---|---
+hide|triggers when dialog will hide
+clickMask|triggers when mask clicked
 
 ## Animation Types
 * zoom
