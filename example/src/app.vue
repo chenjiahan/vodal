@@ -4,7 +4,7 @@
       <h1 class="title scale">Vodal</h1>
       <h3 class="intro scale">A vue modal with animations.</h3>
       <div class="btn-area">
-        <button class="btn scale" v-text="item" v-for="(item, index) in types" :style="delay(index)" @click="onShow(item)" />
+        <button class="btn scale" v-text="item" v-bind:key="index" v-for="(item, index) in types" :style="delay(index)" @click="onShow(item)" />
       </div>
       <vodal measure="em" :show="show" :animation="animation" :width="28.5" :height="17" :duration="301" className="my-dialog" @hide="show = false">
         <div class="header">Vodal</div>
