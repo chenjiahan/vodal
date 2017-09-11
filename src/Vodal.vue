@@ -92,7 +92,10 @@ export default {
       isShow && this.$nextTick(() => {
         this.$el.focus();
       })
-    },
+    }
+  },
+
+  methods: {
     onEsc() {
       if (this.show && this.closeOnEsc) {
         this.$emit('hide');
