@@ -1,6 +1,6 @@
 {
   "name": "vodal",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "A vue modal with animations.",
   "main": "dist/index.js",
   "scripts": {

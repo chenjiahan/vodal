@@ -55,7 +55,7 @@ customStyles|object|/|custom dialog styles
 customMaskStyles|object|/|custom mask styles
 
 ## Event
-Name|
+Name|Description
 ---|---
 hide|triggers when dialog will hide
 clickMask|triggers when mask clicked
