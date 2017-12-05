@@ -38,6 +38,7 @@
     right: 16px;
     width: 16px;
     height: 16px;
+    z-index: 9999;
 }
 
 .vodal-close:before,
