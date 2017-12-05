@@ -25,8 +25,8 @@
     "url": "https://github.com/chenjiahan/vodal/issues"
   },
   "homepage": "https://github.com/chenjiahan/vodal#readme",
-  "dependencies": {
-    "vue": "^2.4.4"
+  "peerDependencies": {
+    "vue": "^2.5.9"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
@@ -36,10 +36,11 @@
     "css-loader": "^0.28.7",
     "del": "^3.0.0",
     "shelljs": "^0.7.7",
-    "vue-loader": "^13.0.5",
-    "vue-template-compiler": "^2.4.4",
-    "webpack": "^3.6.0",
-    "webpack-dev-server": "^2.9.1",
-    "webpack-merge": "^4.1.0"
+    "vue": "^2.5.9",
+    "vue-loader": "^13.5.0",
+    "vue-template-compiler": "^2.5.9",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.9.5",
+    "webpack-merge": "^4.1.1"
   }
 }
